@@ -1,18 +1,20 @@
 class Solution {
-    public int sum(int a,int b){return (a+b)%10;}
-    public int carry(int a,int b){return (a+b)/10;}
-
     public int[] plusOne(int[] digits) {
-        List<Integer> ans = new LinkedList<>();
-        int i,c=1;
-        for(i=digits.length-1;i>=0;i--){
-            ans.add(0,sum(digits[i],c));
-            c=carry(digits[i],c);
+        int last = digits.length-1;
+        int carry = 1;
+        int t;
+        for(int i = last ; i >=0 ; i--){
+            t = digits[i];
+            digits[i] = (t + carry) % 10;
+            carry = ( t + carry ) / 10;
+            if(carry == 0) break;
         }
-        if(c!=0){ans.add(0,c);}
-        int[] arr=new int[ans.size()];
-        for(i=0;i<arr.length;i++){arr[i]=ans.get(i);}
-        ans.clear();
-        return arr;
+        if(carry == 0) return digits;
+        else{
+            int[] temp = new int[digits.length+1];
+            temp[0]=carry;
+            for(int i = 1 ;i < temp.length ; i++){ temp [i] = digits[i-1];}
+            return temp;
+        }
     }
 }
