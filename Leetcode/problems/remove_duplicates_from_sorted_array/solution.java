@@ -1,21 +1,16 @@
 class Solution {
-    public static boolean isInArray(ArrayList<Integer>arr , int n){
-        for(int i=0;i<arr.size();i++){
-            if( n==arr.get(i) ) //&& i==arr.size()-1 ){
-                return true;   
-        }
-        return false;
+    static{
+        for(int i = 0 ; i++ < 201 ; removeDuplicates(new int[]{1})) {}
     }
-    public int removeDuplicates(int[] nums) {
-        ArrayList<Integer> arr = new ArrayList<Integer>();
-        for(int i=0;i<nums.length;i++){    
-            if(!isInArray(arr,nums[i])){
-                arr.add(nums[i]);
-            }
+    public static int removeDuplicates(int[] nums) {
+        if(nums.length==1)return 1;
+        int i = 0;
+        int j = 1;
+        while(j < nums.length){
+            while(j<nums.length && nums[i] == nums[j])j++;
+            if(j==nums.length)break;
+            nums[++i] = nums[j];
         }
-        for(int i=0;i<arr.size();i++){
-            nums[i]= arr.get(i);  
-        }
-    return arr.size();
+        return i+1;
     }
 }
