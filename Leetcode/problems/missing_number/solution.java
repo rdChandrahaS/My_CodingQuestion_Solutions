@@ -1,9 +1,11 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        Arrays.sort(nums);
-        for(int i =0,missing_elm=0;i<nums.length;i++,missing_elm++){
-            if(missing_elm != nums[i]){return missing_elm;}
+        int xor1 = 0;
+        int xor2 = 0;
+        for(int i = 0 ; i < nums.length ; i++){
+            xor1 = xor1 ^ nums[i];
+            xor2 = xor2 ^ (i+1);
         }
-        return nums[nums.length-1]+1;
+        return xor1^xor2;
     }
 }
