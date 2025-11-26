@@ -1,9 +1,13 @@
 name: Sync Leetcode
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual run
   schedule:
-    - cron: "0 8 * * *"
+    - cron: "30 2 * * *" # Runs at 2:30 UTC (8:00 AM India Standard Time)
+
+# Grants permission to write to the repository
+permissions:
+  contents: write
 
 jobs:
   build:
