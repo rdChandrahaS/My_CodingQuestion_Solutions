@@ -1,9 +1,9 @@
 name: Sync Leetcode
 
 on:
-  workflow_dispatch: # Allows you to run this manually right now
+  workflow_dispatch:
   schedule:
-    - cron: "0 8 * * *" # Runs automatically every day at 8:00 AM
+    - cron: "0 8 * * *"
 
 jobs:
   build:
@@ -16,6 +16,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          destination-folder: Leetcode 
-          verbose: true
-          commit-header: 'Sync LeetCode solution'
+          destination-folder: Leetcode
